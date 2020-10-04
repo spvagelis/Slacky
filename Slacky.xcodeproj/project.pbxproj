@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		09BE58D12527397400A9A6DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09BE58CF2527397400A9A6DD /* Main.storyboard */; };
 		09BE58D32527397400A9A6DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09BE58D22527397400A9A6DD /* Assets.xcassets */; };
 		09BE58D62527397400A9A6DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09BE58D42527397400A9A6DD /* LaunchScreen.storyboard */; };
+		09BE58E1252A383700A9A6DD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BE58DF252A383700A9A6DD /* SWRevealViewController.m */; };
+		2CF93F65C3698947200B19D2 /* Pods_Slacky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E892C3BF33B12860D755AB /* Pods_Slacky.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,12 @@
 		09BE58D22527397400A9A6DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09BE58D52527397400A9A6DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09BE58D72527397400A9A6DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09BE58DE252A383700A9A6DD /* Slacky-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Slacky-Bridging-Header.h"; sourceTree = "<group>"; };
+		09BE58DF252A383700A9A6DD /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		09BE58E0252A383700A9A6DD /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		4BDEB5596E8001E0474362DD /* Pods-Slacky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacky.release.xcconfig"; path = "Target Support Files/Pods-Slacky/Pods-Slacky.release.xcconfig"; sourceTree = "<group>"; };
+		AC845B3E12477368F3B515B5 /* Pods-Slacky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacky.debug.xcconfig"; path = "Target Support Files/Pods-Slacky/Pods-Slacky.debug.xcconfig"; sourceTree = "<group>"; };
+		B0E892C3BF33B12860D755AB /* Pods_Slacky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slacky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CF93F65C3698947200B19D2 /* Pods_Slacky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +49,11 @@
 		09BE58BD2527397400A9A6DD = {
 			isa = PBXGroup;
 			children = (
+				09BE58DD252A37CA00A9A6DD /* Supporting Files */,
 				09BE58C82527397400A9A6DD /* Slacky */,
 				09BE58C72527397400A9A6DD /* Products */,
+				98597A5758333B2975637401 /* Pods */,
+				F7EC2D8312409A739359973D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +79,33 @@
 			path = Slacky;
 			sourceTree = "<group>";
 		};
+		09BE58DD252A37CA00A9A6DD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				09BE58E0252A383700A9A6DD /* SWRevealViewController.h */,
+				09BE58DF252A383700A9A6DD /* SWRevealViewController.m */,
+				09BE58DE252A383700A9A6DD /* Slacky-Bridging-Header.h */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98597A5758333B2975637401 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC845B3E12477368F3B515B5 /* Pods-Slacky.debug.xcconfig */,
+				4BDEB5596E8001E0474362DD /* Pods-Slacky.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F7EC2D8312409A739359973D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0E892C3BF33B12860D755AB /* Pods_Slacky.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09BE58DA2527397400A9A6DD /* Build configuration list for PBXNativeTarget "Slacky" */;
 			buildPhases = (
+				E35DCDD4C50F05040E09876C /* [CP] Check Pods Manifest.lock */,
 				09BE58C22527397400A9A6DD /* Sources */,
 				09BE58C32527397400A9A6DD /* Frameworks */,
 				09BE58C42527397400A9A6DD /* Resources */,
+				DBC39ACAE3DC7DFB907E026D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -99,6 +140,7 @@
 				TargetAttributes = {
 					09BE58C52527397400A9A6DD = {
 						CreatedOnToolsVersion = 11.7;
+						LastSwiftMigration = 1170;
 					};
 				};
 			};
@@ -133,6 +175,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DBC39ACAE3DC7DFB907E026D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Slacky/Pods-Slacky-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Slacky/Pods-Slacky-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Slacky/Pods-Slacky-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E35DCDD4C50F05040E09876C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Slacky-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		09BE58C22527397400A9A6DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -141,6 +225,7 @@
 				09BE58CE2527397400A9A6DD /* ViewController.swift in Sources */,
 				09BE58CA2527397400A9A6DD /* AppDelegate.swift in Sources */,
 				09BE58CC2527397400A9A6DD /* SceneDelegate.swift in Sources */,
+				09BE58E1252A383700A9A6DD /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +367,10 @@
 		};
 		09BE58DB2527397400A9A6DD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC845B3E12477368F3B515B5 /* Pods-Slacky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YUSLD5D7Z6;
 				INFOPLIST_FILE = Slacky/Info.plist;
@@ -293,6 +380,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.spvag.Slacky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Slacky-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -300,8 +389,10 @@
 		};
 		09BE58DC2527397400A9A6DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BDEB5596E8001E0474362DD /* Pods-Slacky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YUSLD5D7Z6;
 				INFOPLIST_FILE = Slacky/Info.plist;
@@ -311,6 +402,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.spvag.Slacky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Slacky-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
