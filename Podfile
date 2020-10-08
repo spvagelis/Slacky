@@ -7,7 +7,7 @@ target 'Slacky' do
 
   # Pods for Slacky
   
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 4.2'
   pod 'SwiftyJSON'
   pod 'Socket.IO-Client-Swift'
 

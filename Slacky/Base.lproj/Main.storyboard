@@ -329,6 +329,9 @@
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="createAccountPressed:" destination="lVj-1N-dvP" eventType="touchUpInside" id="Z9s-ds-xVP"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Vwv-8t-WYz">
                                 <rect key="frame" x="157" y="336" width="100" height="100"/>
@@ -374,6 +377,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="fXo-Rq-Fv8"/>
                     <connections>
+                        <outlet property="emailTextField" destination="MhX-hy-n5K" id="z4d-ng-6c0"/>
+                        <outlet property="passwordTextField" destination="f5c-Xs-PsA" id="sF2-7S-yM9"/>
+                        <outlet property="userImageView" destination="Vwv-8t-WYz" id="5Ws-aS-Nni"/>
+                        <outlet property="userNameTextField" destination="BMx-W9-Xfp" id="h66-rS-NuQ"/>
                         <segue destination="70B-3F-ZBR" kind="unwind" identifier="unwindToChannel" unwindAction="prepareForUnwindWithSegue:" id="uE0-e2-vc1"/>
                     </connections>
                 </viewController>
