@@ -19,19 +19,46 @@ class CreateAccountVC: UIViewController {
     
     var avatarName = "profileDefault"
     var avatarColor = "[0.5, 0.5, 0.5, 1]"
-    
+    var bgColor: UIColor?
+    let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+        
+        activityIndicator.isHidden = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(activityIndicator)
+        
+        let horizontalConstraint = activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        let verticalConstraint = activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100)
+        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint])
+        
+        changePlaceholderTextColor()
+    }
+    
+    @objc func handleTap() {
+        
+        view.endEditing(true)
+        
+    }
+    
+    func changePlaceholderTextColor() {
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor : slackyPurplePlaceholder])
+        userNameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedString.Key.foregroundColor : slackyPurplePlaceholder])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor : slackyPurplePlaceholder])
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("The avatar name is \(UserDataService.instance.avatarName)")
+        
         if UserDataService.instance.avatarName != "" {
             userImageView.image = UIImage(named: UserDataService.instance.avatarName)
             avatarName = UserDataService.instance.avatarName
+            if avatarName.contains("light") {
+                userImageView.backgroundColor = UIColor.lightGray
+            }
         }
         
     }
@@ -43,6 +70,12 @@ class CreateAccountVC: UIViewController {
     }
     
     @IBAction func createAccountPressed(_ sender: UIButton) {
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.isHidden = false
+        activityIndicator.color = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
         
         guard let name = userNameTextField.text, userNameTextField.text != "" else { return }
         guard let email = emailTextField.text, emailTextField.text != "" else { return }
@@ -58,6 +91,9 @@ class CreateAccountVC: UIViewController {
                             if success {
                                 print(UserDataService.instance.name, UserDataService.instance.avatarName)
                                 self.performSegue(withIdentifier: UNWIND, sender: nil)
+                                self.activityIndicator.stopAnimating()
+                                self.activityIndicator.hidesWhenStopped = true
+                                NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
                             }
                         }
                     }
@@ -68,5 +104,17 @@ class CreateAccountVC: UIViewController {
     
     @IBAction func pickAvatarPressed(_ sender: UIButton) {
         performSegue(withIdentifier: TO_AVATAR_PICKER, sender: nil)
+    }
+    
+    @IBAction func generateBackgroundColorPressed(_ sender: UIButton) {
+        
+        let r = CGFloat(arc4random_uniform(255)) / 255
+        let g = CGFloat(arc4random_uniform(255)) / 255
+        let b = CGFloat(arc4random_uniform(255)) / 255
+        
+        bgColor = UIColor(red: r, green: g, blue: b, alpha: 1)
+        UIView.animate(withDuration: 0.2) {
+            self.userImageView.backgroundColor = self.bgColor
+        }
     }
 }

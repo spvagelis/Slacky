@@ -51,7 +51,7 @@
                                 <rect key="frame" x="320" y="113.5" width="22" height="22"/>
                                 <state key="normal" image="addChannelButton"/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zYC-Fp-2fG">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zYC-Fp-2fG" customClass="CircleImage" customModule="Slacky" customModuleProvider="target">
                                 <rect key="frame" x="20" y="767" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="H3F-Gt-uXz"/>
@@ -211,6 +211,11 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -335,7 +340,7 @@
                                     <action selector="createAccountPressed:" destination="lVj-1N-dvP" eventType="touchUpInside" id="Z9s-ds-xVP"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Vwv-8t-WYz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Vwv-8t-WYz" customClass="CircleImage" customModule="Slacky" customModuleProvider="target">
                                 <rect key="frame" x="157" y="336" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="KC9-fx-gw2"/>
@@ -354,6 +359,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createAccountBtnPressed:" destination="Dr7-ZF-V73" eventType="touchUpInside" id="lVr-UB-gvS"/>
+                                    <action selector="generateBackgroundColorPressed:" destination="lVj-1N-dvP" eventType="touchUpInside" id="jdG-79-Sfc"/>
                                 </connections>
                             </button>
                         </subviews>
