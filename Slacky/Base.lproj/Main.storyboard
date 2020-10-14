@@ -51,7 +51,7 @@
                                 <rect key="frame" x="320" y="113.5" width="22" height="22"/>
                                 <state key="normal" image="addChannelButton"/>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zYC-Fp-2fG" customClass="CircleImage" customModule="Slacky" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zYC-Fp-2fG" customClass="CircleImage" customModule="Slacky" customModuleProvider="target">
                                 <rect key="frame" x="20" y="767" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="H3F-Gt-uXz"/>
@@ -117,6 +117,7 @@
                     </view>
                     <connections>
                         <outlet property="logInBtn" destination="kjd-Dn-fJp" id="bWZ-wv-SP0"/>
+                        <outlet property="profileImageView" destination="zYC-Fp-2fG" id="9kD-kh-fJw"/>
                         <segue destination="Dr7-ZF-V73" kind="show" identifier="toLogin" id="3Pg-mT-EDI"/>
                     </connections>
                 </viewController>
@@ -216,6 +217,9 @@
                                         <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="Dr7-ZF-V73" eventType="touchUpInside" id="azC-pn-3Cv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -235,6 +239,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="bRj-RK-LQ6"/>
                     <connections>
+                        <outlet property="passwordTextField" destination="XRA-o6-QCX" id="hSh-Jm-mH4"/>
+                        <outlet property="usernameTextField" destination="qPo-lA-oGn" id="a74-E3-Fto"/>
                         <segue destination="lVj-1N-dvP" kind="show" identifier="toCreateAccount" id="rmx-z2-Uui"/>
                     </connections>
                 </viewController>
@@ -545,7 +551,6 @@
     <resources>
         <image name="addChannelButton" width="22" height="22"/>
         <image name="closeButton" width="28" height="28"/>
-        <image name="menuProfileIcon" width="99" height="99"/>
         <image name="profileDefault" width="192" height="192"/>
         <image name="slackyBack" width="28" height="28"/>
         <image name="slackyBurger" width="40" height="40"/>

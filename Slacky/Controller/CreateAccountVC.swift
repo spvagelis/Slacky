@@ -28,13 +28,7 @@ class CreateAccountVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)
         
-        activityIndicator.isHidden = true
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(activityIndicator)
-        
-        let horizontalConstraint = activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        let verticalConstraint = activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100)
-        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint])
+        setupActivityIndicator()
         
         changePlaceholderTextColor()
     }
@@ -43,6 +37,17 @@ class CreateAccountVC: UIViewController {
         
         view.endEditing(true)
         
+    }
+    
+    func setupActivityIndicator() {
+        activityIndicator.isHidden = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.color = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+        self.view.addSubview(activityIndicator)
+        
+        let horizontalConstraint = activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        let verticalConstraint = activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -100)
+        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint])
     }
     
     func changePlaceholderTextColor() {
@@ -71,10 +76,8 @@ class CreateAccountVC: UIViewController {
     
     @IBAction func createAccountPressed(_ sender: UIButton) {
         
-        view.addSubview(activityIndicator)
+        
         activityIndicator.isHidden = false
-        activityIndicator.color = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        activityIndicator.center = view.center
         activityIndicator.startAnimating()
         
         guard let name = userNameTextField.text, userNameTextField.text != "" else { return }
@@ -89,7 +92,7 @@ class CreateAccountVC: UIViewController {
                         AuthService.instance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor) { (success) in
                             
                             if success {
-                                print(UserDataService.instance.name, UserDataService.instance.avatarName)
+                                print(UserDataService.instance.name, UserDataService.instance.avatarName, UserDataService.instance.avatarColor)
                                 self.performSegue(withIdentifier: UNWIND, sender: nil)
                                 self.activityIndicator.stopAnimating()
                                 self.activityIndicator.hidesWhenStopped = true
@@ -113,6 +116,7 @@ class CreateAccountVC: UIViewController {
         let b = CGFloat(arc4random_uniform(255)) / 255
         
         bgColor = UIColor(red: r, green: g, blue: b, alpha: 1)
+        avatarColor = "[\(r), \(g), \(b), 1]"
         UIView.animate(withDuration: 0.2) {
             self.userImageView.backgroundColor = self.bgColor
         }
