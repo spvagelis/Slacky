@@ -12,6 +12,7 @@ class ChannelVC: UIViewController {
     
     @IBOutlet weak var profileImageView: CircleImage!
     @IBOutlet weak var logInBtn: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
         
@@ -23,6 +24,9 @@ class ChannelVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
 
         profileImageView.image = UIImage(named: "profileDefault")
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.size.width - 60
@@ -39,6 +43,15 @@ class ChannelVC: UIViewController {
         setupUserInfo()
         
     }
+    
+    @IBAction func addChannelPressed(_ sender: UIButton) {
+        
+        let addChannel = AddChannelVC()
+        addChannel.modalPresentationStyle = .custom
+        present(addChannel, animated: true, completion: nil)
+        
+    }
+    
 
     @IBAction func logInBtnPressed(_ sender: UIButton) {
         
@@ -71,5 +84,26 @@ class ChannelVC: UIViewController {
         }
         
     }
+    
+}
+
+extension ChannelVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return MessageService.instance.channels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell else { return ChannelCell() }
+        let channel = MessageService.instance.channels[indexPath.row]
+        cell.configureCell(channel: channel)
+        
+        return cell
+    }
+    
+    
+    
     
 }
