@@ -21,7 +21,9 @@ class SocketService: NSObject {
         
         self.manager = SocketManager(socketURL: URL(string: BASE_URL)!)
         self.socket = manager.defaultSocket
+        
         super.init()
+        
     }
     
     func establishConnection() {
@@ -37,7 +39,7 @@ class SocketService: NSObject {
     }
     
     func addChannel(channelName: String, channelDescription: String, completion: @escaping CompletionHandler) {
-        
+
         socket.emit("newChannel", channelName, channelDescription)
         completion(true)
         
@@ -56,8 +58,5 @@ class SocketService: NSObject {
             completion(true)
             
         }
-        
-        
     }
-
 }
