@@ -33,6 +33,7 @@
 		09CF5814253846B100266E30 /* AddChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CF5812253846B100266E30 /* AddChannelVC.swift */; };
 		09CF5815253846B100266E30 /* AddChannelVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CF5813253846B100266E30 /* AddChannelVC.xib */; };
 		09CF58172538716D00266E30 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CF58162538716D00266E30 /* SocketService.swift */; };
+		09CF5819253D8FF700266E30 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CF5818253D8FF700266E30 /* Message.swift */; };
 		2CF93F65C3698947200B19D2 /* Pods_Slacky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E892C3BF33B12860D755AB /* Pods_Slacky.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		09CF5812253846B100266E30 /* AddChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelVC.swift; sourceTree = "<group>"; };
 		09CF5813253846B100266E30 /* AddChannelVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelVC.xib; sourceTree = "<group>"; };
 		09CF58162538716D00266E30 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
+		09CF5818253D8FF700266E30 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4BDEB5596E8001E0474362DD /* Pods-Slacky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacky.release.xcconfig"; path = "Target Support Files/Pods-Slacky/Pods-Slacky.release.xcconfig"; sourceTree = "<group>"; };
 		AC845B3E12477368F3B515B5 /* Pods-Slacky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slacky.debug.xcconfig"; path = "Target Support Files/Pods-Slacky/Pods-Slacky.debug.xcconfig"; sourceTree = "<group>"; };
 		B0E892C3BF33B12860D755AB /* Pods_Slacky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slacky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				09CF580E2537557A00266E30 /* Channel.swift */,
+				09CF5818253D8FF700266E30 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				09CF58172538716D00266E30 /* SocketService.swift in Sources */,
 				09AC01E2252C907B0031BA25 /* AuthService.swift in Sources */,
 				096E78AB25305DA1004E5CFC /* RoundedButton.swift in Sources */,
+				09CF5819253D8FF700266E30 /* Message.swift in Sources */,
 				09CF5814253846B100266E30 /* AddChannelVC.swift in Sources */,
 				09BE58E1252A383700A9A6DD /* SWRevealViewController.m in Sources */,
 				097114E8252AFC930081B847 /* ChannelVC.swift in Sources */,
