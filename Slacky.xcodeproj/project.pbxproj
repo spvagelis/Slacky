@@ -20,6 +20,7 @@
 		097114EA252B77FB0081B847 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097114E9252B77FB0081B847 /* GradientView.swift */; };
 		097114ED252B94CA0081B847 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097114EC252B94CA0081B847 /* Constants.swift */; };
 		097114EF252B9BC40081B847 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097114EE252B9BC40081B847 /* LoginVC.swift */; };
+		0998837A253EF48300425821 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09988379253EF48300425821 /* MessageCell.swift */; };
 		09AC01E2252C907B0031BA25 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC01E1252C907B0031BA25 /* AuthService.swift */; };
 		09BE58CA2527397400A9A6DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE58C92527397400A9A6DD /* AppDelegate.swift */; };
 		09BE58CC2527397400A9A6DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BE58CB2527397400A9A6DD /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 		097114E9252B77FB0081B847 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		097114EC252B94CA0081B847 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		097114EE252B9BC40081B847 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		09988379253EF48300425821 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		09AC01E1252C907B0031BA25 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		09BE58C62527397400A9A6DD /* Slacky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slacky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09BE58C92527397400A9A6DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				096E78AA25305DA1004E5CFC /* RoundedButton.swift */,
 				096E78AC25306606004E5CFC /* CircleImage.swift */,
 				09CF581025382DCA00266E30 /* ChannelCell.swift */,
+				09988379253EF48300425821 /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				097114EF252B9BC40081B847 /* LoginVC.swift in Sources */,
 				096E78B02534351B004E5CFC /* ProfileVC.swift in Sources */,
 				096BDE1F252EFC6500598A35 /* UserDataService.swift in Sources */,
+				0998837A253EF48300425821 /* MessageCell.swift in Sources */,
 				09CF580D253754BE00266E30 /* MessageService.swift in Sources */,
 				09CF580F2537557A00266E30 /* Channel.swift in Sources */,
 				097114EA252B77FB0081B847 /* GradientView.swift in Sources */,
