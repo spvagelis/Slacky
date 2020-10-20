@@ -62,7 +62,7 @@ class MessageService {
                 
                 do {
                     
-                    let json = try JSON(data: data).arrayValue
+                    guard let json = try JSON(data: data).array else { return }
                     
                     for item in json {
                         
@@ -83,9 +83,11 @@ class MessageService {
                     completion(true)
                     
                 } catch {
-                    completion(false)
-                    print(error.localizedDescription)
+                    print("I can't retrieve the data.")
                 }
+            } else {
+                debugPrint(response.result.error as Any)
+                completion(false)
             }
         }
     }
