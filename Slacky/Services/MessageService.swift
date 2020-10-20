@@ -57,13 +57,13 @@ class MessageService {
         Alamofire.request("\(URL_GET_MESSAGES)\(channelId)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
             
             if response.result.error == nil {
-                
                 self.clearMessages()
-                
                 guard let data = response.data else { return }
                 
-                if let json = try? JSON(data: data).array {
-    
+                do {
+                    
+                    let json = try JSON(data: data).arrayValue
+                    
                     for item in json {
                         
                         let messageBody = item["messageBody"].stringValue
@@ -77,13 +77,15 @@ class MessageService {
                         let message = Message(message: messageBody, userName: userName, channelId: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
                         
                         self.messages.append(message)
+                        
                     }
-                    
+                    print("The mesages are: \(self.messages)")
                     completion(true)
+                    
+                } catch {
+                    completion(false)
+                    print(error.localizedDescription)
                 }
-            } else {
-                debugPrint(response.result.error?.localizedDescription)
-                completion(false)
             }
         }
     }

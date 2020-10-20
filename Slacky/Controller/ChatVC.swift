@@ -12,6 +12,7 @@ class ChatVC: UIViewController {
     
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
+    @IBOutlet weak var messageTextField: UITextField!
     
 
     override func viewDidLoad() {
@@ -21,6 +22,13 @@ class ChatVC: UIViewController {
         
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
         self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
@@ -37,6 +45,36 @@ class ChatVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc func handleTap() {
+        
+        view.endEditing(true)
+        
+    }
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+    }
+    
+    @objc func keyboardWillChange(notification: Notification) {
+        
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            
+            view.frame.origin.y = -keyboardRect.height
+            
+        } else {
+            
+            view.frame.origin.y = 0
+            
+        }
+        
     }
     
     @objc func userDataDidChange(_ notification: Notification) {
@@ -66,7 +104,26 @@ class ChatVC: UIViewController {
         getMessages()
     }
     
+    @IBAction func sendMessagePressed(_ sender: UIButton) {
+        
+        if AuthService.instance.isLoggedIn {
+            
+            guard let channelId = MessageService.instance.selectedChannel?.id else { return }
+            guard let message = messageTextField.text else { return }
+            
+            SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId) { (success) in
+                
+                if success {
+                    self.messageTextField.text = ""
+                    self.messageTextField.resignFirstResponder()
+                }
+            }
+        }
+    }
+    
+    
     func onLoginGetMessages() {
+        
         MessageService.instance.findAllChannel { (success) in
             
             if success {
@@ -86,9 +143,9 @@ class ChatVC: UIViewController {
         
         guard let channelId = MessageService.instance.selectedChannel?.id else { return }
         MessageService.instance.findAllMessagesFromSpecificChannel(channelId: channelId) { (success) in
-            
-            
-            
+            if success {
+                print(MessageService.instance.messages)
+            }
         }
     }
 }
